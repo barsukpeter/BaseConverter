@@ -19,6 +19,19 @@ unsigned long long toValue(const std::string& digits, int base)
     return value;
 }
 
+std::string fromValue(unsigned long long value, int base)
+{
+    if (value == 0) return "0";
+    const char* digits = "0123456789ABCDEF";
+    std::string result;
+    while (value > 0)
+    {
+        result.insert(result.begin(), digits[value % base]);
+        value /= base;
+    }
+    return result;
+}
+
 int main()
 {
     SetConsoleCP(1251);

@@ -1,6 +1,8 @@
+#define NOMINMAX
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <limits>
 #include <windows.h>
 
 int digitValue(char c)
@@ -11,12 +13,17 @@ int digitValue(char c)
     return -1;
 }
 
-unsigned long long toValue(const std::string& digits, int base)
+bool toValue(const std::string& digits, int base, unsigned long long& value)
 {
-    unsigned long long value = 0;
+    value = 0;
     for (char c : digits)
-        value = value * base + digitValue(c);
-    return value;
+    {
+        unsigned long long d = digitValue(c);
+        if (value > (std::numeric_limits<unsigned long long>::max() - d) / base)
+            return false;
+        value = value * base + d;
+    }
+    return true;
 }
 
 std::string fromValue(unsigned long long value, int base)
@@ -73,7 +80,13 @@ int main()
         }
     }
 
-    std::cout << fromValue(toValue(number, fromBase), toBase) << std::endl;
+    unsigned long long value = 0;
+    if (!toValue(number, fromBase, value))
+    {
+        std::cout << "Число занадто велике для обробки." << std::endl;
+        return 1;
+    }
 
+    std::cout << fromValue(value, toBase) << std::endl;
     return 0;
 }

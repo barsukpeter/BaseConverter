@@ -40,12 +40,40 @@ int main()
     std::string line;
     std::getline(std::cin, line);
 
+    if (line.empty())
+    {
+        std::cout << "Не введено жодного значення. "
+            << "Очікується: число, вихідна й цільова основа." << std::endl;
+        return 1;
+    }
+
     std::istringstream in(line);
-    std::string number;
+    std::string number, extra;
     int fromBase = 0, toBase = 0;
-    in >> number >> fromBase >> toBase;
+    if (!(in >> number >> fromBase >> toBase) || (in >> extra))
+    {
+        std::cout << "Потрібно рівно три значення: число та дві основи (цілі числа)." << std::endl;
+        return 1;
+    }
+
+    if (fromBase < 2 || fromBase > 16 || toBase < 2 || toBase > 16)
+    {
+        std::cout << "Основа має бути цілим числом від 2 до 16." << std::endl;
+        return 1;
+    }
+
+    for (char c : number)
+    {
+        int d = digitValue(c);
+        if (d < 0 || d >= fromBase)
+        {
+            std::cout << "Число містить цифру, недопустиму для основи "
+                << fromBase << "." << std::endl;
+            return 1;
+        }
+    }
+
     std::cout << fromValue(toValue(number, fromBase), toBase) << std::endl;
 
     return 0;
-
 }

@@ -44,7 +44,7 @@ int main()
     std::string number;
     int fromBase = 0, toBase = 0;
     in >> number >> fromBase >> toBase;
-    std::cout << number << " " << fromBase << " " << toBase << std::endl;
+    std::cout << fromValue(toValue(number, fromBase), toBase) << std::endl;
 
     return 0;
 

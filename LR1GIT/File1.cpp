@@ -3,6 +3,22 @@
 #include <sstream>
 #include <windows.h>
 
+int digitValue(char c)
+{
+    if (c >= '0' && c <= '9') return c - '0';
+    if (c >= 'A' && c <= 'F') return c - 'A' + 10;
+    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+    return -1;
+}
+
+unsigned long long toValue(const std::string& digits, int base)
+{
+    unsigned long long value = 0;
+    for (char c : digits)
+        value = value * base + digitValue(c);
+    return value;
+}
+
 int main()
 {
     SetConsoleCP(1251);

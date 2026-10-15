@@ -65,9 +65,9 @@ int main()
         return 1;
     }
 
-    if (fromBase < 2 || fromBase > 16 || toBase < 2 || toBase > 16)
+    if (fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36)
     {
-        std::cout << "ќснова маЇ бути ц≥лим числом в≥д 2 до 16." << std::endl;
+        std::cout << "ќснова маЇ бути ц≥лим числом в≥д 2 до 36." << std::endl;
         return 1;
     }
 

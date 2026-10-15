@@ -8,8 +8,8 @@
 int digitValue(char c)
 {
     if (c >= '0' && c <= '9') return c - '0';
-    if (c >= 'A' && c <= 'F') return c - 'A' + 10;
-    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+    if (c >= 'A' && c <= 'Z') return c - 'A' + 10;
+    if (c >= 'a' && c <= 'z') return c - 'a' + 10;
     return -1;
 }
 
@@ -18,7 +18,9 @@ bool toValue(const std::string& digits, int base, unsigned long long& value)
     value = 0;
     for (char c : digits)
     {
-        unsigned long long d = digitValue(c);
+        int d = digitValue(c);
+        if (d < 0 || d >= base)
+            return false;
         if (value > (std::numeric_limits<unsigned long long>::max() - d) / base)
             return false;
         value = value * base + d;
@@ -29,7 +31,7 @@ bool toValue(const std::string& digits, int base, unsigned long long& value)
 std::string fromValue(unsigned long long value, int base)
 {
     if (value == 0) return "0";
-    const char* digits = "0123456789ABCDEF";
+    const char* digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     std::string result;
     while (value > 0)
     {

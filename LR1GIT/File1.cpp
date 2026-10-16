@@ -39,6 +39,11 @@ std::string fromValue(unsigned long long value, int base)
     return result;
 }
 
+bool validBase(int base)
+{
+    return base >= 2 && base <= 16;
+}
+
 int main()
 {
     SetConsoleCP(1251);
@@ -63,7 +68,7 @@ int main()
         return 1;
     }
 
-    if (fromBase < 2 || fromBase > 16 || toBase < 2 || toBase > 16)
+    if (!validBase(fromBase) || !validBase(toBase))
     {
         std::cout << "ќснова маЇ бути ц≥лим числом в≥д 2 до 16." << std::endl;
         return 1;

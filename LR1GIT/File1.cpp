@@ -41,6 +41,11 @@ std::string fromValue(unsigned long long value, int base)
     return result;
 }
 
+bool validBase(int base)
+{
+    return base >= 2 && base <= 16;
+}
+
 int main()
 {
     SetConsoleCP(1251);
@@ -65,7 +70,7 @@ int main()
         return 1;
     }
 
-    if (fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36)
+    if (!validBase(fromBase) || !validBase(toBase))
     {
         std::cout << "Основа має бути цілим числом від 2 до 36." << std::endl;
         return 1;
@@ -76,7 +81,7 @@ int main()
         int d = digitValue(c);
         if (d < 0 || d >= fromBase)
         {
-            std::cout << "Число містить цифру, недопустиму для основи "
+            std::cout << "Символ '" << c << "' недопустимий для основи "
                 << fromBase << "." << std::endl;
             return 1;
         }

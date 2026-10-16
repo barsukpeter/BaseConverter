@@ -74,7 +74,7 @@ int main()
         int d = digitValue(c);
         if (d < 0 || d >= fromBase)
         {
-            std::cout << "Число містить цифру, недопустиму для основи "
+            std::cout << "Символ '" << c << "' недопустимий для основи "
                 << fromBase << "." << std::endl;
             return 1;
         }

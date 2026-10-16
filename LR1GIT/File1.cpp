@@ -43,7 +43,7 @@ std::string fromValue(unsigned long long value, int base)
 
 bool validBase(int base)
 {
-    return base >= 2 && base <= 16;
+    return base >= 2 && base <= 36;
 }
 
 int main()

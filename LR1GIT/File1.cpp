@@ -70,9 +70,17 @@ int main()
         return 1;
     }
 
-    if (!validBase(fromBase) || !validBase(toBase))
+    if (!validBase(fromBase))
     {
-        std::cout << "Основа має бути цілим числом від 2 до 36." << std::endl;
+        std::cout << "Вихідна основа " << fromBase
+            << " недопустима: потрібно ціле число від 2 до 36." << std::endl;
+        return 1;
+    }
+
+    if (!validBase(toBase))
+    {
+        std::cout << "Цільова основа " << toBase
+            << " недопустима: потрібно ціле число від 2 до 36." << std::endl;
         return 1;
     }
 

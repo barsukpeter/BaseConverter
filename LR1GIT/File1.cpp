@@ -1,4 +1,4 @@
-#define NOMINMAX
+ï»¿#define NOMINMAX
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -50,14 +50,14 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    std::cout << "Ââåä³òü ÷èñëî, âèõ³äíó é ö³ëüîâó îñíîâó ÷åðåç ïðîá³ë: ";
+    std::cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð¾, Ð²Ð¸Ñ…Ñ–Ð´Ð½Ñƒ Ð¹ Ñ†Ñ–Ð»ÑŒÐ¾Ð²Ñƒ Ð¾ÑÐ½Ð¾Ð²Ñƒ Ñ‡ÐµÑ€ÐµÐ· Ð¿Ñ€Ð¾Ð±Ñ–Ð»: ";
     std::string line;
     std::getline(std::cin, line);
 
     if (line.empty())
     {
-        std::cout << "Íå ââåäåíî æîäíîãî çíà÷åííÿ. "
-            << "Î÷³êóºòüñÿ: ÷èñëî, âèõ³äíà é ö³ëüîâà îñíîâà." << std::endl;
+        std::cout << "ÐÐµ Ð²Ð²ÐµÐ´ÐµÐ½Ð¾ Ð¶Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ. "
+            << "ÐžÑ‡Ñ–ÐºÑƒÑ”Ñ‚ÑŒÑÑ: Ñ‡Ð¸ÑÐ»Ð¾, Ð²Ð¸Ñ…Ñ–Ð´Ð½Ð° Ð¹ Ñ†Ñ–Ð»ÑŒÐ¾Ð²Ð° Ð¾ÑÐ½Ð¾Ð²Ð°." << std::endl;
         return 1;
     }
 
@@ -66,13 +66,13 @@ int main()
     int fromBase = 0, toBase = 0;
     if (!(in >> number >> fromBase >> toBase) || (in >> extra))
     {
-        std::cout << "Ïîòð³áíî ð³âíî òðè çíà÷åííÿ: ÷èñëî òà äâ³ îñíîâè (ö³ë³ ÷èñëà)." << std::endl;
+        std::cout << "ÐŸÐ¾Ñ‚Ñ€Ñ–Ð±Ð½Ð¾ Ñ€Ñ–Ð²Ð½Ð¾ Ñ‚Ñ€Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ: Ñ‡Ð¸ÑÐ»Ð¾ Ñ‚Ð° Ð´Ð²Ñ– Ð¾ÑÐ½Ð¾Ð²Ð¸ (Ñ†Ñ–Ð»Ñ– Ñ‡Ð¸ÑÐ»Ð°)." << std::endl;
         return 1;
     }
 
     if (!validBase(fromBase) || !validBase(toBase))
     {
-        std::cout << "Îñíîâà ìàº áóòè ö³ëèì ÷èñëîì â³ä 2 äî 36." << std::endl;
+        std::cout << "ÐžÑÐ½Ð¾Ð²Ð° Ð¼Ð°Ñ” Ð±ÑƒÑ‚Ð¸ Ñ†Ñ–Ð»Ð¸Ð¼ Ñ‡Ð¸ÑÐ»Ð¾Ð¼ Ð²Ñ–Ð´ 2 Ð´Ð¾ 36." << std::endl;
         return 1;
     }
 
@@ -81,7 +81,7 @@ int main()
         int d = digitValue(c);
         if (d < 0 || d >= fromBase)
         {
-            std::cout << "Ñèìâîë '" << c << "' íåäîïóñòèìèé äëÿ îñíîâè "
+            std::cout << "Ð¡Ð¸Ð¼Ð²Ð¾Ð» '" << c << "' Ð½ÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¸Ð¹ Ð´Ð»Ñ Ð¾ÑÐ½Ð¾Ð²Ð¸ "
                 << fromBase << "." << std::endl;
             return 1;
         }
@@ -90,7 +90,7 @@ int main()
     unsigned long long value = 0;
     if (!toValue(number, fromBase, value))
     {
-        std::cout << "×èñëî çàíàäòî âåëèêå äëÿ îáðîáêè." << std::endl;
+        std::cout << "Ð§Ð¸ÑÐ»Ð¾ Ð·Ð°Ð½Ð°Ð´Ñ‚Ð¾ Ð²ÐµÐ»Ð¸ÐºÐµ Ð´Ð»Ñ Ð¾Ð±Ñ€Ð¾Ð±ÐºÐ¸." << std::endl;
         return 1;
     }
 
